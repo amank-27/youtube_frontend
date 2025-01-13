@@ -7,3 +7,11 @@
     margin: 0px;
     box-sizing: border-box;
 }
+
+ .homepage_options::-webkit-scrollbar {
+    width: 25px;
+  } 
+  
+.home-sidebar::-webkit-scrollbar {
+    width: 12px;
+  }

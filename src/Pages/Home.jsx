@@ -8,9 +8,9 @@ function Home({sideNavbar}){
     return(
         <>
         <div 
-        className="home flex w-[100%] px-[13px] pt-[40px] box-border">
+        className="home flex w-[100%] pr-[13px] pt-[40px] box-border bg-black">
          <Sidebar sideNavbar={sideNavbar}/>
-         <HomePage/>
+         <HomePage sideNavbar={sideNavbar}/>
         </div> 
         </>
     )
