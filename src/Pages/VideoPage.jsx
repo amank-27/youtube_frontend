@@ -12,7 +12,9 @@ function VideoPage() {
     navigate(`/videos/${videoId}`);
   };
 
-  if (loading || allVideosLoading) return <div className="text-white">Loading...</div>;
+  if (loading || allVideosLoading) return <div className="flex justify-center items-center h-screen">
+  <div className="w-16 h-16 border-4 border-blue-800 border-t-transparent border-solid rounded-full animate-spin"></div>
+</div>
   if (error || allVideosError) return <div className="text-white">Error loading video data</div>;
 
   return (

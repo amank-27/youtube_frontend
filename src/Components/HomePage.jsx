@@ -8,7 +8,9 @@ function HomePage({ sideNavbar, searchTerm }) {
   const [selectedGenre, setSelectedGenre] = useState('All'); 
   const options = ["All", "Music", "Gaming", "Comedy", "Documentary", "Anime Music", "Anime Music Video", "Anime Fight"];
 
-  if (loading) return <div className="text-white">Loading...</div>;
+  if (loading) return <div className="flex justify-center items-center w-[100vw] h-[100vh]">
+  <div className="w-16 h-16 border-4 border-blue-800 border-t-transparent border-solid rounded-full animate-spin"></div>
+</div>
   if (error) return <div className="text-white">Error loading videos</div>;
 
   // filter the videos based on the search term
