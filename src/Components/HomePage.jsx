@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate
 import useFetch from '../utils/useFetch';
 
 function HomePage({ sideNavbar, searchTerm }) {
+  const navigate = useNavigate();  // Initialize useNavigate hook
   const { data: videos, loading, error } = useFetch('https://youtube-backend-iukm.onrender.com/videos');
   const [selectedGenre, setSelectedGenre] = useState('All'); 
   const options = ["All", "Music", "Gaming", "Comedy", "Documentary", "Anime Music", "Anime Music Video", "Anime Fight"];
@@ -39,7 +41,11 @@ function HomePage({ sideNavbar, searchTerm }) {
       {/* Video List */}
       <div className="video-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-20 pl-4">
         {filteredVideos.map((video) => (
-          <div key={video._id} className="video-card bg-black text-white rounded-md overflow-hidden cursor-pointer hover:bg-[rgb(28,28,28)] transition-all duration-200">
+          <div 
+            key={video._id} 
+            className="video-card bg-black text-white rounded-md overflow-hidden cursor-pointer hover:bg-[rgb(28,28,28)] transition-all duration-200"
+            onClick={() => navigate(`/videos/${video._id}`)} // Navigate to the specific video page
+          >
             <div className="thumbnail-container w-full h-[180px]">
               <img src={`/${video.thumbnail}`} alt={video.title} className="w-full h-full object-cover rounded-md" />
             </div>

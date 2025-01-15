@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Home from './Pages/Home';
+import VideoPage from './Pages/VideoPage';  // Import the VideoPage
 
 function App() {
   const [sideNavbar, setSideNavbar] = useState(true);
-  const [searchTerm, setSearchTerm] = useState(''); // Search term state
+  const [searchTerm, setSearchTerm] = useState(''); 
 
   function setSideNavbarfunc() {
     setSideNavbar(prev => !prev);
@@ -15,13 +17,13 @@ function App() {
       <Navbar 
         setSideNavbarfunc={setSideNavbarfunc} 
         sideNavbar={sideNavbar} 
-        searchTerm={searchTerm} // pass searchTerm
-        setSearchTerm={setSearchTerm} // pass setSearchTerm to update searchTerm
+        searchTerm={searchTerm} 
+        setSearchTerm={setSearchTerm} 
       />
-      <Home 
-        sideNavbar={sideNavbar} 
-        searchTerm={searchTerm} // pass searchTerm to HomePage
-      />
+      <Routes>
+        <Route path="/" element={<Home sideNavbar={sideNavbar} searchTerm={searchTerm} />} />
+        <Route path="/videos/:id" element={<VideoPage />} />  {/* VideoPage Route */}
+      </Routes>
     </div>
   );
 }

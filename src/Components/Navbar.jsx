@@ -3,13 +3,20 @@ import MenuIcon from '@mui/icons-material/Menu';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import SearchIcon from '@mui/icons-material/Search';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate
 
 function Navbar({ setSideNavbarfunc, sideNavbar, searchTerm, setSearchTerm }) {
   const [userPic, setUserPic] = useState("https://img.freepik.com/free-vector/add-new-user_78370-4710.jpg?ga=GA1.1.364819553.1719325834&semt=ais_hybrid");
   const [navbarProfile, setNavbarProfile] = useState(false);
+  
+  const navigate = useNavigate(); // Initialize useNavigate
 
   function handleClickProfile() {
     setNavbarProfile(prev => !prev);
+  }
+
+  function handleLogoClick() {
+    navigate('/'); // Navigate to home when YouTube icon or text is clicked
   }
 
   return (
@@ -18,7 +25,7 @@ function Navbar({ setSideNavbarfunc, sideNavbar, searchTerm, setSearchTerm }) {
         <div className="menuicon w-10 h-10 flex justify-center items-center cursor-pointer" onClick={setSideNavbarfunc}>
           <MenuIcon sx={{ color: "white" }} />
         </div>
-        <div className="youtubeicon flex justify-center items-center cursor-pointer text-white">
+        <div className="youtubeicon flex justify-center items-center cursor-pointer text-white" onClick={handleLogoClick}>
           <YouTubeIcon sx={{ fontSize: "34px" }} className="text-red-600" />
           <div className="youtubetitle hidden md:block">YouTube</div>
         </div>
@@ -28,7 +35,7 @@ function Navbar({ setSideNavbarfunc, sideNavbar, searchTerm, setSearchTerm }) {
           <input 
             type="text" 
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} // Update the searchTerm on change
+            onChange={(e) => setSearchTerm(e.target.value)} 
             placeholder='Search'
             className='searchbar w-[90%] h-[40px] rounded-l-2xl  border border-solid border-[rgb(58,57,57)] bg-black text-white text-lg pl-7' 
           />
