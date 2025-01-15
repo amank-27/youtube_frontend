@@ -3,20 +3,26 @@ import MenuIcon from '@mui/icons-material/Menu';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import SearchIcon from '@mui/icons-material/Search';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
-function Navbar({ setSideNavbarfunc, sideNavbar, searchTerm, setSearchTerm }) {
-  const [userPic, setUserPic] = useState("https://img.freepik.com/free-vector/add-new-user_78370-4710.jpg?ga=GA1.1.364819553.1719325834&semt=ais_hybrid");
+function Navbar({ setSideNavbarfunc, sideNavbar, searchTerm, setSearchTerm, userPic, isLoggedIn, handleLogout }) {
   const [navbarProfile, setNavbarProfile] = useState(false);
-  
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   function handleClickProfile() {
     setNavbarProfile(prev => !prev);
   }
 
   function handleLogoClick() {
-    navigate('/'); // Navigate to home when YouTube icon or text is clicked
+    navigate('/');
+  }
+
+  function handleLoginClick() {
+    navigate('/login');
+  }
+
+  function handleRegisterClick() {
+    navigate('/register');
   }
 
   return (
@@ -50,9 +56,17 @@ function Navbar({ setSideNavbarfunc, sideNavbar, searchTerm, setSearchTerm }) {
         <img onClick={handleClickProfile} src={userPic} alt="login" className='navbar-login w-[30px] rounded-[50%] cursor-pointer ' />
         {navbarProfile && (
           <div className="profilediv absolute top-9 w-[100%] z-20 right-1 text-white">
-            <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] ">Profile</div>
-            <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] ">Logout</div>
-            <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] ">Login</div>
+            {isLoggedIn ? (
+              <>
+                <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] ">Profile</div>
+                <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleLogout}>Logout</div>
+              </>
+            ) : (
+              <>
+                <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleLoginClick}>Login</div>
+                <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleRegisterClick}>Register</div>
+              </>
+            )}
           </div>
         )}
       </div>
