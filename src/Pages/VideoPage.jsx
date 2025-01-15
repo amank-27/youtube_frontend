@@ -20,7 +20,7 @@ function VideoPage() {
   return (
     <div className="bg-black text-white flex flex-row pt-20 gap-6">
       {/* Left Video Player (Fixed) */}
-      <div className="flex-3 sticky top-20">
+      <div className="flex-3 sticky top-20 w-full lg:w-[65vw] h-full lg:h-auto">
         <iframe
           width="100%"
           height="500px"
@@ -56,7 +56,7 @@ function VideoPage() {
       </div>
 
       {/* Right Side (All Videos - Scrollable) */}
-      <div className="flex-1 ml-4 overflow-y-auto max-h-screen">
+      <div className="flex-1 ml-4 overflow-y-auto max-h-screen hidden md:block lg:block">
         <h2 className="text-xl font-bold">All Videos</h2>
         {allVideos.map((item) => (
           <div key={item._id} className="related-video mt-4 cursor-pointer" onClick={() => handleVideoClick(item._id)}>
