@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from './Components/Navbar'; 
 import Home from './Pages/Home'; 
@@ -14,19 +14,25 @@ function App() {
   const [sideNavbar, setSideNavbar] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Toggle the sideNavbar
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const userName = localStorage.getItem('userName');
+    if (token && userName) {
+      setIsLoggedIn(true); // If token and username exist in localStorage, the user is logged in
+      setUserPic("https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png"); // Set user profile picture
+    }
+  }, []);
+
   function setSideNavbarfunc() {
     setSideNavbar(prev => !prev);
   }
 
-  // Handle login success (set user as logged in)
   function handleLoginSuccess() {
-    setIsLoggedIn(true); // Set the user as logged in
+    setIsLoggedIn(true);
   }
 
-  // Handle logout
   function handleLogout() {
-    setIsLoggedIn(false); // Set the user as logged out
+    setIsLoggedIn(false);
     setUserPic("https://img.freepik.com/free-vector/add-new-user_78370-4710.jpg?ga=GA1.1.364819553.1719325834&semt=ais_hybrid");
     localStorage.removeItem('userName');
     localStorage.removeItem('email');

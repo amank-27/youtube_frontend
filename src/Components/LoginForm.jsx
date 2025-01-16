@@ -33,6 +33,7 @@ export function Login({ setUserPic, handleLoginSuccess }) {
 
             if (message.token) {
                 localStorage.setItem("userName", username);
+                localStorage.setItem("email", message.email); // Store email
                 localStorage.setItem("token", message.token);
 
                 // Set user picture after login

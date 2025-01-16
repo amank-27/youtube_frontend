@@ -1,20 +1,22 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useFetch from '../utils/useFetch';
+import { Comments } from '../Components/Comments'; // Import Comments component
 
 function VideoPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { data: video, loading, error } = useFetch(`https://youtube-backend-iukm.onrender.com/videos/${id}`);
   const { data: allVideos, loading: allVideosLoading, error: allVideosError } = useFetch('https://youtube-backend-iukm.onrender.com/videos');
-  
+
+  const userName = localStorage.getItem("userName"); // Check if the user is logged in
   const handleVideoClick = (videoId) => {
     navigate(`/videos/${videoId}`);
   };
 
   if (loading || allVideosLoading) return <div className="flex justify-center items-center h-screen">
-  <div className="w-16 h-16 border-4 border-blue-800 border-t-transparent border-solid rounded-full animate-spin"></div>
-</div>
+    <div className="w-16 h-16 border-4 border-blue-800 border-t-transparent border-solid rounded-full animate-spin"></div>
+  </div>;
   if (error || allVideosError) return <div className="text-white">Error loading video data</div>;
 
   return (
@@ -46,12 +48,8 @@ function VideoPage() {
         {/* Comments Section */}
         <div className="comments mt-8">
           <h2 className="text-xl font-semibold">Comments</h2>
-          {video.comments.map((comment) => (
-            <div key={comment.commentId} className="comment mt-4 p-4 bg-gray-800 rounded-lg shadow-md">
-              <div className="comment-user font-semibold">{comment.userName}</div>
-              <div className="comment-text mt-2">{comment.text}</div>
-            </div>
-          ))}
+          {/* Pass video ID and logged-in userName to Comments component */}
+          {userName && <Comments id={id} />}
         </div>
       </div>
 

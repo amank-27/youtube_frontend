@@ -22,11 +22,9 @@ export function Register() {
             return;
         }
 
-        // Log the data being sent to the server
         console.log("Data to be sent:", { username, email, password });
 
         try {
-            // Send the registration request to the correct API URL
             const response = await fetch('https://youtube-backend-iukm.onrender.com/register', {
                 method: 'POST',
                 headers: {
@@ -39,7 +37,6 @@ export function Register() {
                 }),
             });
 
-            // If the request fails, log the response and show an error
             if (!response.ok) {
                 const errorData = await response.json();
                 console.log("Error Response:", errorData);
@@ -47,21 +44,14 @@ export function Register() {
                 return;
             }
 
-            // Parse the server response
             const data = await response.json();
             console.log("Server Response:", data);
 
             if (data.User) {
-                // If registration is successful, store data in localStorage
                 localStorage.setItem('userName', data.User.username);
-                localStorage.setItem('email', data.User.email);
+                localStorage.setItem('email', data.User.email); // Save email
                 localStorage.setItem('token', data.token);
-                localStorage.setItem('channelName', data.User.channelName);
-
-                // Show success message
                 alert(data.message);
-
-                // Redirect to home after successful registration
                 navigate('/');
             } else {
                 alert(data.message);
