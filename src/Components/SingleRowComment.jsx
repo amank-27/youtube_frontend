@@ -1,9 +1,8 @@
 import { useState } from "react";
 
 export function SingleRowComment({ data }) {
-  const { setReload, e, reload } = data;
+  const { setReload, e, reload, userEmail } = data;
   const userName = localStorage.getItem("userName");
-  const userEmail = localStorage.getItem("email");  // Fetch userEmail from localStorage
 
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState(e.commentData);
@@ -21,7 +20,7 @@ export function SingleRowComment({ data }) {
     });
     const message = await deleteUser.json();
 
-    console.log("Delete response:", message);  // Debug response from the delete request
+    console.log("Delete response:", message);
     if (message.message === "comment deleted") {
       setReload(!reload);
     } else {
@@ -41,7 +40,7 @@ export function SingleRowComment({ data }) {
       return;
     }
 
-    console.log("Saving comment:", text);  // Debug the comment being saved
+    console.log("Saving comment:", text);
 
     const updateComment = await fetch("https://youtube-backend-iukm.onrender.com/comment", {
       method: "PUT",
@@ -54,7 +53,7 @@ export function SingleRowComment({ data }) {
       })
     });
     const message = await updateComment.json();
-    console.log("Update response:", message);  // Debug response from the update request
+    console.log("Update response:", message);
 
     if (message.message === "comment updated") {
       setIsEditing(false);
@@ -64,15 +63,11 @@ export function SingleRowComment({ data }) {
     }
   }
 
-  // Debugging: Check the logged-in user's email and the comment's userEmail
-  console.log("Current logged-in user's email:", userEmail);
-  console.log("Comment userEmail:", e.userEmail);
-
+  // Display logic for Edit/Delete only if the logged-in user is the one who posted the comment
   return (
     <div className="relative flex gap-5 border border-black-400 bg-purple-600 justify-start items-center w-[60%] rounded-xl">
       <div className="w-[80%] flex gap-5 justify-start items-center">
         <div className="flex gap-2 border border-black-600 w-fit p-[5px] rounded-xl bg-red-600">
-         
           <div>{e.userName}</div>
         </div>
         {!isEditing && <div className="text-black">{e.commentData}</div>}
@@ -86,11 +81,12 @@ export function SingleRowComment({ data }) {
         )}
       </div>
 
-      {/* Debug: Check if the logged-in user's email matches the userEmail in the comment */}
+      {/* Only show the time if the email is not the same */}
       {userEmail !== e.userEmail && <div className="right-5 text-gray-800">a while ago</div>}
+
+      {/* Show Edit/Delete buttons only if the logged-in user is the author of the comment */}
       {userEmail === e.userEmail && (
         <div>
-          {/* Only show Edit and Delete options for the logged-in user's comment */}
           {!isEditing && (
             <div
               className="cursor-pointer text-black font-semibold"

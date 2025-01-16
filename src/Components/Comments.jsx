@@ -1,16 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { SingleRowComment } from "./SingleRowComment";
 
 export function Comments(props) {
-    const navigate = useNavigate();
-
     const userName = localStorage.getItem("userName");
     const email = localStorage.getItem("email");
 
     const [comment, setComment] = useState("");
     const [reload, setReload] = useState(true);
-
     const id = props.id;
 
     const [data, setData] = useState(null);
@@ -18,7 +14,7 @@ export function Comments(props) {
     useEffect(() => {
         async function retrieve() {
             const response = await fetch("https://youtube-backend-iukm.onrender.com/comment");
-            const result = await response.json();   
+            const result = await response.json();
             setData(result);
         }
         retrieve();
@@ -47,9 +43,7 @@ export function Comments(props) {
 
     return (
         <div className="flex flex-col justify-center items-center gap-5">
-           
-
-            {/* If logged in, show comment input box */}
+            {/* Show comment input box if logged in */}
             {userName && (
                 <div className="flex flex-col gap-[5px] justify-center items-center">
                     <textarea 
@@ -60,16 +54,16 @@ export function Comments(props) {
                     />
                     <button 
                         onClick={handleSubmitComment} 
-                        className="border border-red-600 bg-red-600 rounded-lg font-extrabold text-xl p-[5px] w-[150px]"
+                        className="border border-red-600 bg-red-600 rounded-lg font-extrabold text-xl p-[5px] w-[250px]"
                     >
-                        Comment
+                        Add Comment
                     </button>
                 </div>
             )}
 
             {/* Display comments for this video */}
             {data && data.filter(e => id === e.videoId).map(e => (
-                <SingleRowComment key={e._id} data={{ setReload, e, reload }} />
+                <SingleRowComment key={e._id} data={{ setReload, e, reload, userEmail: email }} />
             ))}
         </div>
     );

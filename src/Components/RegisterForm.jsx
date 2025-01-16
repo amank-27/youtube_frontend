@@ -52,7 +52,13 @@ export function Register() {
                 localStorage.setItem('email', data.User.email); // Save email
                 localStorage.setItem('token', data.token);
                 alert(data.message);
-                navigate('/');
+                if(data.message=="User registered successfully")
+                    {
+                        setTimeout(()=>{
+                        navigate("/login");
+                    },1000);
+                }
+                
             } else {
                 alert(data.message);
             }

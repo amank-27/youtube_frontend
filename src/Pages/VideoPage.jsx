@@ -47,14 +47,14 @@ function VideoPage() {
 
         {/* Comments Section */}
         <div className="comments mt-8">
-          <h2 className="text-xl font-semibold">Comments</h2>
+         
           {/* Pass video ID and logged-in userName to Comments component */}
-          {userName && <Comments id={id} />}
+          <Comments id={id} />
         </div>
       </div>
 
       {/* Right Side (All Videos - Scrollable) */}
-      <div className="flex-1 ml-4 overflow-y-auto max-h-screen hidden md:block lg:block">
+      <div className="flex-1 ml-4 overflow-y-auto max-h-screen hidden md:block lg:block " style={{ maxHeight: "calc(100vh + 350px)" }}>
         <h2 className="text-xl font-bold">All Videos</h2>
         {allVideos.map((item) => (
           <div key={item._id} className="related-video mt-4 cursor-pointer" onClick={() => handleVideoClick(item._id)}>
