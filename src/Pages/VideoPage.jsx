@@ -2,8 +2,9 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useFetch from '../utils/useFetch';
 import { Comments } from '../Components/Comments'; // Import Comments component
+import Sidebar from '../Components/Sidebar';
 
-function VideoPage() {
+function VideoPage({sideNavbar}) {
   const { id } = useParams();
   const navigate = useNavigate();
   const { data: video, loading, error } = useFetch(`https://youtube-backend-iukm.onrender.com/videos/${id}`);
@@ -20,7 +21,9 @@ function VideoPage() {
   if (error || allVideosError) return <div className="text-white">Error loading video data</div>;
 
   return (
-    <div className="bg-black text-white flex flex-row pt-20 gap-6">
+    
+    <div className="bg-black text-white flex flex-row pt-14 gap-6">
+      <Sidebar  sideNavbar={sideNavbar} />
       {/* Left Video Player (Fixed) */}
       <div className="flex-3 sticky top-20 w-full lg:w-[65vw] h-full lg:h-auto">
         <iframe
@@ -28,7 +31,6 @@ function VideoPage() {
           height="500px"
           src={`${video.url}?autoplay=1`}  // Ensure autoplay is enabled
           title={video.title}
-          frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />

@@ -5,6 +5,7 @@ import Home from './Pages/Home';
 import VideoPage from './Pages/VideoPage'; 
 import { Login } from './Components/LoginForm'; 
 import { Register } from './Components/RegisterForm'; 
+import ChannelPage from "./Components/ChannelPage";
 
 function App() {
   const [userPic, setUserPic] = useState(
@@ -53,12 +54,13 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<Home sideNavbar={sideNavbar} searchTerm={searchTerm} />} />
-        <Route path="/videos/:id" element={<VideoPage />} />
+        <Route path="/videos/:id" element={<VideoPage sideNavbar={sideNavbar} />} />
         <Route 
           path="/login" 
           element={<Login setUserPic={setUserPic} handleLoginSuccess={handleLoginSuccess} />} 
         />
         <Route path="/register" element={<Register />} />
+        <Route path="/channel" element={<ChannelPage />} />
       </Routes>
     </div>
   );
