@@ -21,8 +21,8 @@ function HomePage({ sideNavbar, searchTerm }) {
   }
 
   return (
-    <div className={sideNavbar ? "homepage flex flex-col overflow-x-hidden flex-[1] ml-[142px] min-h-[100vh] lg:ml-[252px]" : "fullhomepage flex flex-col overflow-x-hidden flex-[1] ml-[0px] min-h-[100vh]"}>
-      <div className="homepage_options flex fixed top-[72px] z-[1] w-[100%] box-border gap-5 flex-shrink-0 h-[auto] overflow-x-auto bg-black lg:top-[56px] md:top-[102px]">
+    <div className={"sideNavbar fullhomepage flex flex-col overflow-x-hidden flex-[1] ml-[0px] min-h-[100vh]"}>
+      <div className="homepage_options flex fixed top-[76px] pl-4 z-[1] w-[100%] box-border gap-5 flex-shrink-0 h-[auto] overflow-x-auto bg-black lg:top-[56px] md:top-[104px]  lg:pl-36 md:pl-6">
         {options.map((item, index) => (
           <div
             key={index}
@@ -35,7 +35,7 @@ function HomePage({ sideNavbar, searchTerm }) {
       </div>
 
       {/* Video List */}
-      <div className="video-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-20 pl-4">
+      <div className="video-list  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 pt-20 pr-4 pl-4 md:pr-20 md:pl-20 ">
         {filteredVideos.map((video) => {
           const videoOwner = video.owner || "Amank";  // Use "Amank" if no owner is found
           return (

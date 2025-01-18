@@ -5,6 +5,10 @@ export function UserPage() {
   const navigate = useNavigate();
   const [reload, setReload] = useState(true);
   const [data, setData] = useState(null);
+  const [editingVideo, setEditingVideo] = useState(null); // To track which video is being edited
+  const [editedTitle, setEditedTitle] = useState("");
+  const [editedDescription, setEditedDescription] = useState("");
+  const [editedGenre, setEditedGenre] = useState("");
 
   const userName = localStorage.getItem("userName");
   const email = localStorage.getItem("email");
@@ -33,8 +37,8 @@ export function UserPage() {
     return (
       <div>
         <div className="flex justify-center items-center h-screen">
-      <div className="w-16 h-16 border-4 border-blue-800 border-t-transparent border-solid rounded-full animate-spin"></div>
-    </div>
+          <div className="w-16 h-16 border-4 border-blue-800 border-t-transparent border-solid rounded-full animate-spin"></div>
+        </div>
       </div>
     );
   }
@@ -70,6 +74,43 @@ export function UserPage() {
   // Function to handle navigating to the video player page
   function handleVideoClick(videoId) {
     navigate(`/videos/${videoId}`); // Navigate to the video player page on click
+  }
+
+  // Function to handle editing a video
+  function handleVideoEdit(video) {
+    setEditingVideo(video); // Set the video to be edited
+    setEditedTitle(video.title);
+    setEditedDescription(video.description);
+    setEditedGenre(video.genre);
+  }
+
+  // Function to save the edited video
+  async function handleSaveEdit() {
+    if (!editingVideo) return;
+
+    const updatedVideo = {
+      title: editedTitle,
+      description: editedDescription,
+      genre: editedGenre,
+    };
+
+    const response = await fetch(`https://youtube-backend-iukm.onrender.com/editvideo/${editingVideo._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedVideo),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      alert("Video updated successfully!");
+      setReload(!reload); // Refresh the list
+      setEditingVideo(null); // Close the edit modal
+    } else {
+      alert("Error updating video.");
+    }
   }
 
   // Filter videos where the owner matches the channelName from localStorage
@@ -166,12 +207,21 @@ export function UserPage() {
                     </div>
                     <div className="video-owner text-gray-500 mt-2">{video.owner}</div>
                   </div>
-                  <div className="delete-video-button mt-4 flex justify-center">
+                  <div className="video-actions mt-4 flex justify-between">
                     <button
                       onClick={(e) => handleVideoDelete(video._id, e)} // Pass event to prevent redirection on delete
                       className="text-red-600 font-bold"
                     >
                       Delete Video
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent video redirection
+                        handleVideoEdit(video);
+                      }}
+                      className="text-blue-600 font-bold"
+                    >
+                      Edit Video
                     </button>
                   </div>
                 </div>
@@ -180,6 +230,50 @@ export function UserPage() {
           </div>
         </div>
       </div>
+
+      {/* Edit Modal */}
+      {editingVideo && (
+        <div className="modal fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-md w-[400px]">
+            <h2 className="text-xl font-semibold mb-4">Edit Video</h2>
+            <label className="block text-sm font-medium">Title</label>
+            <input
+              type="text"
+              value={editedTitle}
+              onChange={(e) => setEditedTitle(e.target.value)}
+              className="w-full p-2 mt-2 border border-gray-300 rounded-md"
+            />
+            <label className="block text-sm font-medium mt-4">Description</label>
+            <textarea
+              value={editedDescription}
+              onChange={(e) => setEditedDescription(e.target.value)}
+              className="w-full p-2 mt-2 border border-gray-300 rounded-md"
+              rows="4"
+            ></textarea>
+            <label className="block text-sm font-medium mt-4">Genre</label>
+            <input
+              type="text"
+              value={editedGenre}
+              onChange={(e) => setEditedGenre(e.target.value)}
+              className="w-full p-2 mt-2 border border-gray-300 rounded-md"
+            />
+            <div className="mt-4 flex justify-between">
+              <button
+                onClick={() => setEditingVideo(null)} // Close modal
+                className="bg-gray-400 text-white py-2 px-4 rounded-md"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSaveEdit} // Save changes
+                className="bg-blue-600 text-white py-2 px-4 rounded-md"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
