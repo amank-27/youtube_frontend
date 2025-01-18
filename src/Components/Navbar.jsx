@@ -65,13 +65,13 @@ function Navbar({ setSideNavbarfunc, sideNavbar, searchTerm, setSearchTerm, user
                 </div>
             </div>
             <div className="navbar-right flex gap-5 justify-center items-center relative">
-                <VideoCallIcon sx={{ fontSize: "30px", cursor: "pointer", color: "white" }} onClick={handleVideoCallClick} />
+                <VideoCallIcon sx={{ fontSize: "30px", cursor: "pointer", color: "white" }}  />
                 <img onClick={handleClickProfile} src={userPic} alt="login" className='navbar-login w-[30px] rounded-[50%] cursor-pointer ' />
                 {navbarProfile && (
                     <div className="profilediv absolute top-9 w-[100%] z-20 right-1 text-white">
                         {isLoggedIn ? (
                             <>
-                                <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] ">Profile</div>
+                                <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleVideoCallClick}>Channel</div>
                                 <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleLogout}>Logout</div>
                             </>
                         ) : (

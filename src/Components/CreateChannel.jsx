@@ -7,17 +7,14 @@ export function CreateChannel() {
   const [channelDescription, setChannelDescription] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  // Retrieve token and channel name from localStorage
   const token = localStorage.getItem("token");
   const savedChannelName = localStorage.getItem("channelName");
 
-  // If there's no token, redirect to the login page
   if (!token) {
     navigate("/login");
     return;
   }
 
-  // If a channel already exists, redirect to the user's page
   if (savedChannelName) {
     navigate("/userpage");
     return;
@@ -26,9 +23,15 @@ export function CreateChannel() {
   async function createChannelHandler(e) {
     e.preventDefault();
 
-    // Validate inputs
     if (!channelName || !channelDescription) {
       setErrorMessage("Both Channel Name and Description are required.");
+      return;
+    }
+
+    const email = localStorage.getItem("email");
+
+    if (!email) {
+      setErrorMessage("Email is required to create a channel.");
       return;
     }
 
@@ -40,8 +43,9 @@ export function CreateChannel() {
           "Authorization": `JWT ${token}`,
         },
         body: JSON.stringify({
-          channelName,
-          channelDescription,
+          email,  
+          channelName, 
+          channelDescription, 
         }),
       });
 
@@ -53,8 +57,12 @@ export function CreateChannel() {
 
       if (result.success || response.status === 201) {
         alert("Channel created successfully");
-        localStorage.setItem("channelName", channelName); // Save channelName in localStorage
-        navigate("/userpage"); // Redirect to the user's page after creating the channel
+
+        // Debug: Log before saving to localStorage
+        console.log("Saving Channel Name to localStorage:", channelName);
+        
+        localStorage.setItem("channelName", channelName); 
+        navigate("/userpage");
       } else {
         setErrorMessage(result.message || "An unknown error occurred.");
       }

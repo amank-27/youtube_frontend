@@ -7,6 +7,7 @@ import { Login } from './Components/LoginForm';
 import { Register } from './Components/RegisterForm'; 
 import CreateChannel from "./Components/CreateChannel";
 import UserPage from "./Components/UserPage";
+import AddVideo from "./Components/addVideo";
 
 function App() {
   const navigate = useNavigate();
@@ -61,6 +62,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/createchannel" element={<CreateChannel />} />
         <Route path="/userpage" element={<UserPage />} />
+        <Route path="/addvideo" element={<AddVideo />} />
       </Routes>
     </div>
   );
