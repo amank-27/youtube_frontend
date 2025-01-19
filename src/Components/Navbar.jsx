@@ -5,6 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import SearchIcon from '@mui/icons-material/Search';
 
+//component navbar containing search function and profile icon
 function Navbar({ setSideNavbarfunc, sideNavbar, searchTerm, setSearchTerm, userPic, isLoggedIn, handleLogout }) {
     const navigate = useNavigate();
     const [navbarProfile, setNavbarProfile] = useState(false);
@@ -50,36 +51,30 @@ function Navbar({ setSideNavbarfunc, sideNavbar, searchTerm, setSearchTerm, user
                 </div>
             </div>
             <div className="navbar-middle flex gap-3 w-[50%]">
-                <div className="navsearch w-[100%] flex">
-                    <input 
-                        type="text" 
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)} 
-                        placeholder='Search'
-                        className='searchbar w-[90%] h-[40px] rounded-l-2xl  border border-solid border-[rgb(58,57,57)] bg-black text-white text-lg pl-7' 
-                    />
-                    <div
-                        className="searchicon cursor-pointer w-[70px]  border border-solid border-[rgb(42,42,42)] bg-[rgb(42,42,42)] flex justify-center items-center rounded-r-2xl">
-                        <SearchIcon sx={{ fontSize: "28px", color: "white" }} />
-                    </div>
-                </div>
+         <div className="navsearch w-[100%] flex">
+         <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}  placeholder='Search'
+          className='searchbar w-[90%] h-[40px] rounded-l-2xl  border border-solid border-[rgb(58,57,57)] bg-black text-white text-lg pl-7' />
+              <div className="searchicon cursor-pointer w-[70px]  border border-solid border-[rgb(42,42,42)] bg-[rgb(42,42,42)] flex justify-center items-center rounded-r-2xl">
+                 <SearchIcon sx={{ fontSize: "28px", color: "white" }} />
+             </div>
             </div>
-            <div className="navbar-right flex gap-5 justify-center items-center relative">
-                <VideoCallIcon sx={{ fontSize: "30px", cursor: "pointer", color: "white" }}  />
-                <img onClick={handleClickProfile} src={userPic} alt="login" className='navbar-login w-[30px] rounded-[50%] cursor-pointer ' />
-                {navbarProfile && (
-                    <div className="profilediv absolute top-9 w-[100%] z-20 right-1 text-white">
-                        {isLoggedIn ? (
-                            <>
-                                <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleChannelClick}>Channel</div>
-                                <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleLogout}>Logout</div>
-                            </>
-                        ) : (
-                            <>
-                                <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleLoginClick}>Login</div>
-                                <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleRegisterClick}>Register</div>
-                            </>
-                        )}
+            </div>
+         <div className="navbar-right flex gap-5 justify-center items-center relative">
+        <VideoCallIcon sx={{ fontSize: "30px", cursor: "pointer", color: "white" }}  />
+        <img onClick={handleClickProfile} src={userPic} alt="login" className='navbar-login w-[30px] rounded-[50%] cursor-pointer ' />
+         {navbarProfile && (
+          <div className="profilediv absolute top-9 w-[100%] z-20 right-1 text-white">
+                 {isLoggedIn ? (
+                      <>
+                     <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleChannelClick}>Channel</div>
+                      <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleLogout}>Logout</div>
+                     </>
+                     ) : (
+                     <>
+                     <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleLoginClick}>Login</div>
+                      <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleRegisterClick}>Register</div>
+                     </>
+                     )}
                     </div>
                 )}
             </div>

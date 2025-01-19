@@ -48,10 +48,10 @@ export function AddVideo({ onVideoAdded , sideNavbar }) {
 
     if (message.message === "video added") {
       if (onVideoAdded) {
-        onVideoAdded(); // Trigger reload in UserPage
+        onVideoAdded(); // trigger reload in UserPage
       }
       setTimeout(() => {
-        navigate("/channelpage"); // Navigate back to the user page
+        navigate("/channelpage"); // navigate back to the user page
       }, 1000);
     }
   }
@@ -61,49 +61,20 @@ export function AddVideo({ onVideoAdded , sideNavbar }) {
        <Sidebar sideNavbar={sideNavbar} />
       <form className="border border-white rounded-lg w-[50%] p-[5%] flex flex-col gap-2 justify-center items-center">
       <h1 className='text-2xl font-bold text-purple-800'>Add Video Details</h1>
-        <input
-          type="text"
-          onChange={(e) => setVideoId(e.target.value)}
-          placeholder="Video ID"
-          className="w-[70%] text-xl p-[5px] rounded-lg text-black"
-        />
-       
-        <input
-          type="text"
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Title"
-          className="w-[70%] text-xl p-[5px] rounded-lg text-black"
-        />
-        <input
-          type="text"
-          onChange={(e) => setUrl(e.target.value)}
-          placeholder="Enter Video URL"
-          className="w-[70%] text-xl p-[5px] rounded-lg text-black"
-        />
-        <input
-          type="text"
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Description"
-          className="w-[70%] text-xl p-[5px] rounded-lg text-black"
-        />
-        <input
-          type="text"
-          onChange={(e) => setThumbnail(e.target.value)}
-          placeholder="Enter Thumbnail URL"
-          className="w-[70%] text-xl p-[5px] rounded-lg text-black"
-        />
-        <input
-          type="text"
-          onChange={(e) => setGenre(e.target.value)}
-          placeholder="Genre"
-          className="w-[70%] text-xl p-[5px] rounded-lg text-black"
-        />
-
-        <button
-          type="submit"
-          onClick={(e) => submit(e)}
-          className="border border-red-600 bg-red-600 font-bold w-[70%] text-xl p-[5px] rounded-lg"
-        >
+        <input type="text" onChange={(e) => setVideoId(e.target.value)} placeholder="Video ID"
+        className="w-[70%] text-xl p-[5px] rounded-lg text-black"/>
+       <input type="text" onChange={(e) => setTitle(e.target.value)} placeholder="Title"
+        className="w-[70%] text-xl p-[5px] rounded-lg text-black"/>
+        <input type="text" onChange={(e) => setUrl(e.target.value)} placeholder="Enter Video URL"
+        className="w-[70%] text-xl p-[5px] rounded-lg text-black"/>
+        <input type="text" onChange={(e) => setDescription(e.target.value)} placeholder="Description"
+          className="w-[70%] text-xl p-[5px] rounded-lg text-black" />
+        <input type="text" onChange={(e) => setThumbnail(e.target.value)} placeholder="Enter Thumbnail URL"
+        className="w-[70%] text-xl p-[5px] rounded-lg text-black"/>
+        <input type="text" onChange={(e) => setGenre(e.target.value)} placeholder="Genre"
+        className="w-[70%] text-xl p-[5px] rounded-lg text-black"/>
+        <button type="submit" onClick={(e) => submit(e)}
+        className="border border-red-600 bg-red-600 font-bold w-[70%] text-xl p-[5px] rounded-lg">
           Submit
         </button>
       </form>

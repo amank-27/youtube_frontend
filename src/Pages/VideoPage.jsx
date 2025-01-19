@@ -1,28 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useFetch from '../utils/useFetch';
-import { Comments } from '../Components/Comments'; // Import Comments component
+import { Comments } from '../Components/Comments'; // import Comments component
 import Sidebar from '../Components/Sidebar';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 
+//videoPage component showcasing each video to be played with comments this page also have comment component
 function VideoPage({ sideNavbar }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const { data: video, loading, error } = useFetch(`https://youtube-backend-iukm.onrender.com/videos/${id}`);
   const { data: allVideos, loading: allVideosLoading, error: allVideosError } = useFetch('https://youtube-backend-iukm.onrender.com/videos');
 
-  const [likes, setLikes] = useState(0);  // Set initial likes to 0 (or some other default value)
-  const [thumbUpClicked, setThumbUpClicked] = useState(false);  // Track if thumbs-up was clicked
-  const [thumbDownClicked, setThumbDownClicked] = useState(false);  // Track if thumbs-down was clicked
+  const [likes, setLikes] = useState(0);  
+  const [thumbUpClicked, setThumbUpClicked] = useState(false);  // tracking if thumbs-up was clicked
+  const [thumbDownClicked, setThumbDownClicked] = useState(false);  // tracking if thumbs-down was clicked
 
-  const userName = localStorage.getItem("userName"); // Check if the user is logged in
+  const userName = localStorage.getItem("userName"); // checking if the user is logged in
   const handleVideoClick = (videoId) => {
     navigate(`/videos/${videoId}`);
   };
 
   useEffect(() => {
-    // Only update the likes if the video data has been fetched successfully
+    
     if (video && video.likes !== undefined) {
       setLikes(video.likes);
     }
@@ -30,31 +31,28 @@ function VideoPage({ sideNavbar }) {
 
   const handleThumbUpClick = () => {
     if (thumbDownClicked) {
-      // If thumbs-down was clicked, unclick it and then like
       setThumbDownClicked(false);
       setLikes(likes + 1);  // Increase likes
     } else {
       // Toggle the like state
       setThumbUpClicked(!thumbUpClicked);
       if (thumbUpClicked) {
-        setLikes(likes - 1);  // Decrease likes if unliking
+        setLikes(likes - 1);  // Decrease likes 
       } else {
-        setLikes(likes + 1);  // Increase likes if liking
+        setLikes(likes + 1);  // Increase likes 
       }
     }
-    setThumbUpClicked(!thumbUpClicked);  // Toggle thumbUpClicked state
+    setThumbUpClicked(!thumbUpClicked);  e
   };
 
   const handleThumbDownClick = () => {
     if (thumbUpClicked) {
-      // If thumbs-up was clicked, unclick it and then dislike
       setThumbUpClicked(false);
-      setLikes(likes - 1);  // Decrease likes
+      setLikes(likes - 1);  
     } else {
-      // Toggle the dislike state
       setThumbDownClicked(!thumbDownClicked);
     }
-    setThumbDownClicked(!thumbDownClicked);  // Toggle thumbDownClicked state
+    setThumbDownClicked(!thumbDownClicked);  
   };
 
   if (loading || allVideosLoading) return (
@@ -105,7 +103,7 @@ function VideoPage({ sideNavbar }) {
 
         {/* Comments Section */}
         <div className="comments mt-8">
-          {/* Pass video ID and logged-in userName to Comments component */}
+          {/* pass video id and logged-in userName to comments component */}
           <Comments id={id} />
         </div>
       </div>

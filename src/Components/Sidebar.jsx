@@ -16,6 +16,7 @@ import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 
+//componenet sidebar showing static sidebar present in youtube only home icon works
 function Sidebar({sideNavbar}){
     const navigate = useNavigate();
     function handleNavigate(){

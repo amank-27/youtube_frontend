@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../utils/useFetch";
 
+//component HomePage it has sideNavbar genre option and video cards basically our main page
 function HomePage({ sideNavbar, searchTerm }) {
   const navigate = useNavigate(); 
   const { data: videos, loading, error } = useFetch("https://youtube-backend-iukm.onrender.com/videos");
@@ -28,8 +29,7 @@ function HomePage({ sideNavbar, searchTerm }) {
           <div
             key={index}
             className={`hompage_option flex-shrink-0 flex-grow-0 basis-auto h-[30px] py-1 px-[10px] bg-[rgb(42,42,42)] text-white font-semibold rounded-[5px] flex justify-center items-center cursor-pointer ${selectedGenre === item ? 'bg-red-600' : ''}`}
-            onClick={() => setSelectedGenre(item)}
-          >
+            onClick={() => setSelectedGenre(item)} >
             {item}
           </div>
         ))}
@@ -38,24 +38,22 @@ function HomePage({ sideNavbar, searchTerm }) {
       {/* Video List */}
       <div className="video-list  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 pt-20 pr-4 pl-4 md:pr-20 md:pl-20 ">
         {filteredVideos.map((video) => {
-          const videoOwner = video.owner || "Amank";  // Use "Amank" if no owner is found
+          const videoOwner = video.owner || "Amank";  
           return (
-            <div 
-              key={video._id} 
-              className="video-card bg-black text-white rounded-md overflow-hidden cursor-pointer hover:bg-[rgb(28,28,28)] transition-all duration-200"
-              onClick={() => navigate(`/videos/${video._id}`)}
-            >
-              <div className="thumbnail-container w-full h-[180px]">
-                <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover rounded-md" />
-              </div>
-              <div className="video-info p-4">
-                <h3 className="video-title text-xl font-semibold truncate">{video.title}</h3>
-                <div className="video-stats text-sm mt-2 text-gray-400">
-                  <span className="video-views">{video.views} views • </span>
-                  <span className="video-likes">{video.likes} likes</span>
-                </div>
-                <div className="video-owner text-gray-500 mt-2">{videoOwner}</div>
-              </div>
+          <div  key={video._id} 
+          className="video-card bg-black text-white rounded-md overflow-hidden cursor-pointer hover:bg-[rgb(28,28,28)] transition-all duration-200"
+          onClick={() => navigate(`/videos/${video._id}`)} >
+          <div className="thumbnail-container w-full h-[180px]">
+              <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover rounded-md" />
+          </div>
+            <div className="video-info p-4">
+             <h3 className="video-title text-xl font-semibold truncate">{video.title}</h3>
+             <div className="video-stats text-sm mt-2 text-gray-400">
+              <span className="video-views">{video.views} views • </span>
+              <span className="video-likes">{video.likes} likes</span>
+           </div>
+          <div className="video-owner text-gray-500 mt-2">{videoOwner}</div>
+             </div>
             </div>
           );
         })}

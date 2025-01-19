@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+//component singlerow comment to target each comment for edit and delete functionality
 export function SingleRowComment({ data }) {
   const { setReload, e, reload, userEmail } = data;
   const userName = localStorage.getItem("userName");
@@ -63,7 +64,7 @@ export function SingleRowComment({ data }) {
     }
   }
 
-  // Display logic for Edit/Delete only if the logged-in user is the one who posted the comment
+  
   return (
     <div className="relative flex gap-5 border border-black-400 bg-[#668B8B] justify-start items-center w-[60%] rounded-xl">
       <div className="w-[80%] flex gap-5 pl-4 justify-start items-center">
@@ -72,41 +73,26 @@ export function SingleRowComment({ data }) {
         </div>
         {!isEditing && <div className="text-black">{e.commentData}</div>}
         {isEditing && (
-          <input
-            type="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)} // Update text on change
-            className="text-black rounded-lg p-[2px]"
-          />
+        <input type="text" value={text} onChange={(e) => setText(e.target.value)} // Update text on change
+        className="text-black rounded-lg p-[2px]"/>
         )}
       </div>
-
-      {/* Only show the time if the email is not the same */}
+      
       {userEmail !== e.userEmail && <div className="right-5 text-gray-800">Recently</div>}
-
       {/* Show Edit/Delete buttons only if the logged-in user is the author of the comment */}
       {userEmail === e.userEmail && (
         <div>
           {!isEditing && (
-            <div
-              className="cursor-pointer text-black font-semibold"
-              onClick={handleEdit}
-            >
-              Edit
-            </div>
+          <div className="cursor-pointer text-black font-semibold" onClick={handleEdit} >
+            Edit
+          </div>
           )}
-          {isEditing && (
-            <div
-              className="cursor-pointer text-black font-semibold"
-              onClick={handleSaveEdit}
-            >
-              Save
-            </div>
+        {isEditing && (
+         <div className="cursor-pointer text-black font-semibold" onClick={handleSaveEdit}>
+           Save
+        </div>
           )}
-          <div
-            onClick={() => handleDelete(e._id)}
-            className="cursor-pointer text-black font-semibold"
-          >
+        <div onClick={() => handleDelete(e._id)} className="cursor-pointer text-black font-semibold">
             Delete
           </div>
         </div>

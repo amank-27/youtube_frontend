@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 
+//componenet for creation of channel
 export function CreateChannel({sideNavbar}) {
   const navigate = useNavigate();
   const [channelName, setChannelName] = useState('');
@@ -58,8 +59,6 @@ export function CreateChannel({sideNavbar}) {
 
       if (result.success || response.status === 201) {
         alert("Channel created successfully");
-
-        // Debug: Log before saving to localStorage
         console.log("Saving Channel Name to localStorage:", channelName);
         
         localStorage.setItem("channelName", channelName); 
@@ -78,8 +77,7 @@ export function CreateChannel({sideNavbar}) {
       <Sidebar sideNavbar={sideNavbar} />
       <form
         className="border border-white rounded-lg w-[50%] p-[5%] flex flex-col gap-10 justify-center items-center"
-        onSubmit={createChannelHandler}
-      >
+        onSubmit={createChannelHandler} >
         <h1 className='text-2xl font-bold text-purple-800'>Add Channel Details</h1>
         {errorMessage && <div className="text-red-600">{errorMessage}</div>}
         <input
@@ -87,18 +85,15 @@ export function CreateChannel({sideNavbar}) {
           value={channelName}
           onChange={(e) => setChannelName(e.target.value)}
           placeholder="Channel Name"
-          className="w-[70%] text-xl p-[5px] rounded-lg text-black"
-        />
+          className="w-[70%] text-xl p-[5px] rounded-lg text-black" />
         <textarea
           value={channelDescription}
           onChange={(e) => setChannelDescription(e.target.value)}
           placeholder="Channel Description"
-          className="w-[70%] text-xl p-[5px] rounded-lg text-black"
-        />
+          className="w-[70%] text-xl p-[5px] rounded-lg text-black" />
         <button
           type="submit"
-          className="border border-red-600 bg-red-600 font-bold w-[70%] text-xl p-[5px] rounded-lg"
-        >
+          className="border border-red-600 bg-red-600 font-bold w-[70%] text-xl p-[5px] rounded-lg">
           Create Channel
         </button>
       </form>

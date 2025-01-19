@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { SingleRowComment } from "./SingleRowComment";
 
+//component which retrieves comment from the database
 export function Comments(props) {
     const userName = localStorage.getItem("userName");
     const email = localStorage.getItem("email");
@@ -43,25 +44,20 @@ export function Comments(props) {
 
     return (
         <div className="flex flex-col justify-center items-center gap-5">
-            {/* Show comment input box if logged in */}
-            {userName && (
-                <div className="flex flex-col gap-[5px] justify-center items-center">
-                    <textarea 
-                        value={comment} 
-                        onChange={(e) => { setComment(e.target.value); }} 
-                        className="w-[50vw] rounded-xl p-[10px] text-black" 
-                        placeholder="add your comment"
-                    />
-                    <button 
-                        onClick={handleSubmitComment} 
-                        className="border border-red-600 bg-red-600 rounded-lg font-extrabold text-xl p-[5px] w-[20vw]"
-                    >
-                        Add Comment
-                    </button>
-                </div>
+         {userName && (
+            <div className="flex flex-col gap-[5px] justify-center items-center">
+            <textarea 
+             value={comment} 
+             onChange={(e) => { setComment(e.target.value); }} 
+             className="w-[50vw] rounded-xl p-[10px] text-black" 
+             placeholder="add comment" />
+        <button  onClick={handleSubmitComment}  className="border border-red-600 bg-red-600 rounded-lg font-extrabold text-xl p-[5px] w-[20vw]" >
+                Add Comment
+        </button>
+             </div>
             )}
 
-            {/* Display comments for this video */}
+            {/* Display comments for the video you are in */}
             {data && data.filter(e => id === e.videoId).map(e => (
                 <SingleRowComment key={e._id} data={{ setReload, e, reload, userEmail: email }} />
             ))}
