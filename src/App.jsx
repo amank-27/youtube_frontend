@@ -7,7 +7,7 @@ import { Login } from './Components/LoginForm';
 import { Register } from './Components/RegisterForm'; 
 import CreateChannel from "./Components/CreateChannel";
 import ChannelPage from "./Components/ChannelPage";
-import AddVideo from "./Components/addVideo";
+import AddVideo from "./Components/AddVideo";
 
 function App() {
   const navigate = useNavigate();
