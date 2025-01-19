@@ -25,13 +25,13 @@ function Navbar({ setSideNavbarfunc, sideNavbar, searchTerm, setSearchTerm, user
         navigate('/register');
     }
 
-    function handleVideoCallClick() {
+    function handleChannelClick() {
         // Check if the user already has a channel
         const channelName = localStorage.getItem('channelName');
         
         if (channelName) {
             // If channel exists, go to the user page
-            navigate('/userpage');
+            navigate('/channelpage');
         } else {
             // If no channel exists, redirect to create channel page
             navigate('/createchannel');
@@ -71,7 +71,7 @@ function Navbar({ setSideNavbarfunc, sideNavbar, searchTerm, setSearchTerm, user
                     <div className="profilediv absolute top-9 w-[100%] z-20 right-1 text-white">
                         {isLoggedIn ? (
                             <>
-                                <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleVideoCallClick}>Channel</div>
+                                <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleChannelClick}>Channel</div>
                                 <div className="profile-option bg-[rgb(85,85,85)] p-3 cursor-pointer hover:bg-[rgb(34,33,33)] " onClick={handleLogout}>Logout</div>
                             </>
                         ) : (

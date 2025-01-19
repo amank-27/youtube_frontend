@@ -6,7 +6,7 @@ import VideoPage from './Pages/VideoPage';
 import { Login } from './Components/LoginForm'; 
 import { Register } from './Components/RegisterForm'; 
 import CreateChannel from "./Components/CreateChannel";
-import UserPage from "./Components/UserPage";
+import ChannelPage from "./Components/ChannelPage";
 import AddVideo from "./Components/addVideo";
 
 function App() {
@@ -57,12 +57,12 @@ function App() {
         <Route path="/videos/:id" element={<VideoPage sideNavbar={sideNavbar} />} />
         <Route 
           path="/login" 
-          element={<Login setUserPic={setUserPic} handleLoginSuccess={() => setIsLoggedIn(true)} />} 
+          element={<Login sideNavbar={sideNavbar} setUserPic={setUserPic} handleLoginSuccess={() => setIsLoggedIn(true)} />} 
         />
-        <Route path="/register" element={<Register />} />
-        <Route path="/createchannel" element={<CreateChannel />} />
-        <Route path="/userpage" element={<UserPage />} />
-        <Route path="/addvideo" element={<AddVideo />} />
+        <Route path="/register" element={<Register sideNavbar={sideNavbar} />} />
+        <Route path="/createchannel" element={<CreateChannel sideNavbar={sideNavbar} />} />
+        <Route path="/channelpage" element={<ChannelPage sideNavbar={sideNavbar} />} />
+        <Route path="/addvideo" element={<AddVideo sideNavbar={sideNavbar} />} />
       </Routes>
     </div>
   );

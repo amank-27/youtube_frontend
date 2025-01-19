@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Sidebar from './Sidebar';
 
-export function CreateChannel() {
+export function CreateChannel({sideNavbar}) {
   const navigate = useNavigate();
   const [channelName, setChannelName] = useState('');
   const [channelDescription, setChannelDescription] = useState('');
@@ -16,7 +17,7 @@ export function CreateChannel() {
   }
 
   if (savedChannelName) {
-    navigate("/userpage");
+    navigate("/channelpage");
     return;
   }
 
@@ -62,7 +63,7 @@ export function CreateChannel() {
         console.log("Saving Channel Name to localStorage:", channelName);
         
         localStorage.setItem("channelName", channelName); 
-        navigate("/userpage");
+        navigate("/channelpage");
       } else {
         setErrorMessage(result.message || "An unknown error occurred.");
       }
@@ -73,11 +74,13 @@ export function CreateChannel() {
   }
 
   return (
-    <div className="w-full h-screen flex justify-center items-center">
+    <div className="w-full h-screen flex justify-center items-center pt-14 bg-black">
+      <Sidebar sideNavbar={sideNavbar} />
       <form
         className="border border-white rounded-lg w-[50%] p-[5%] flex flex-col gap-10 justify-center items-center"
         onSubmit={createChannelHandler}
       >
+        <h1 className='text-2xl font-bold text-purple-800'>Add Channel Details</h1>
         {errorMessage && <div className="text-red-600">{errorMessage}</div>}
         <input
           type="text"

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Sidebar from './Sidebar';
 
-export function Register() {
+export function Register({sideNavbar}) {
     const navigate = useNavigate();
 
     const [username, setUsername] = useState('');
@@ -69,11 +70,13 @@ export function Register() {
     }
 
     return (
-        <div className="w-[100%] h-[100vh] flex justify-center items-center">
+        <div className="w-[100%] h-[100vh] flex justify-center items-center pt-14 bg-black">
+             <Sidebar sideNavbar={sideNavbar} />
             <form
-                className="border border-white rounded-lg w-[50%] p-[5%] flex flex-col gap-10 justify-center items-center"
+                className="border border-white rounded-lg w-[50%] p-[5%] flex flex-col gap-5 justify-center items-center"
                 onSubmit={handleRegister}
             >
+                <h1 className='text-2xl font-bold text-purple-800'>Register</h1>
                 <input
                     type="text"
                     value={username}

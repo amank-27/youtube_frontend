@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
-export function UserPage() {
+export function ChannelPage({sideNavbar}) {
   const navigate = useNavigate();
   const [reload, setReload] = useState(true);
   const [data, setData] = useState(null);
@@ -146,7 +147,8 @@ export function UserPage() {
   }
 
   return (
-    <div className="pt-16">
+    <div className="pt-14">
+      <Sidebar sideNavbar={sideNavbar} />
       <div className="m-10">
         <div className="flex m-10 ml-[10%]">
           <div className="rounded-[500px] overflow-hidden w-[100px] h-[100px]">
@@ -160,18 +162,18 @@ export function UserPage() {
             <div className="text-3xl font-semibold ml-[20px]">{channelName}</div>
             <div className="font-bold text-gray-400 ml-[20px]">0 Subs</div>
             <div className="flex flex-col md:flex-row md:gap-5">
-              <div className="text-center border p-2 rounded-r-[50px] rounded-l-[50px] bg-gray-600 font-bold text-l cursor-pointer m-2">
+              <div className="text-center border p-2 rounded-r-[50px] rounded-l-[50px] text-purple-800 bg-red-600 font-bold text-l cursor-pointer m-2">
                 Subscribe
               </div>
               <div
                 onClick={() => navigate("/addvideo")}
-                className="text-center border p-2 rounded-r-[50px] rounded-l-[50px] bg-cyan-600 font-bold text-l cursor-pointer m-2 w-[100px]"
+                className="text-center border p-2 rounded-r-[50px] rounded-l-[50px] text-purple-800 bg-red-600 font-bold text-l cursor-pointer m-2 w-[100px]"
               >
                 Add Video
               </div>
               <div
                 onClick={handleDelete}
-                className="text-center border p-2 rounded-r-[50px] rounded-l-[50px] bg-red-600 font-bold text-l cursor-pointer m-2"
+                className="text-center border p-2 rounded-r-[50px] rounded-l-[50px] text-purple-800 bg-red-600 font-bold text-l cursor-pointer m-2"
               >
                 Delete Channel
               </div>
@@ -181,7 +183,7 @@ export function UserPage() {
         <div className="border"></div>
 
         <div>
-          <div className="m-10 text-2xl">Uploads:</div>
+          <div className="m-10 text-2xl text-purple-800">Uploads:</div>
           <div className="video-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pl-4">
             {userVideos.length === 0 ? (
               <div className="text-white text-center">No videos uploaded yet.</div>
@@ -278,4 +280,4 @@ export function UserPage() {
   );
 }
 
-export default UserPage;
+export default ChannelPage;

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
-export function AddVideo({ onVideoAdded }) {
+export function AddVideo({ onVideoAdded , sideNavbar }) {
   const navigate = useNavigate();
 
   const [videoId, setVideoId] = useState("");
@@ -50,20 +51,23 @@ export function AddVideo({ onVideoAdded }) {
         onVideoAdded(); // Trigger reload in UserPage
       }
       setTimeout(() => {
-        navigate("/userpage"); // Navigate back to the user page
+        navigate("/channelpage"); // Navigate back to the user page
       }, 1000);
     }
   }
 
   return (
-    <div className="w-[100%] h-[100vh] flex justify-center items-center pt-16">
-      <form className="border border-white rounded-lg w-[50%] p-[5%] flex flex-col gap-10 justify-center items-center">
+    <div className="w-[100%] h-[100vh] flex justify-center items-center pt-16 bg-black">
+       <Sidebar sideNavbar={sideNavbar} />
+      <form className="border border-white rounded-lg w-[50%] p-[5%] flex flex-col gap-2 justify-center items-center">
+      <h1 className='text-2xl font-bold text-purple-800'>Add Video Details</h1>
         <input
           type="text"
           onChange={(e) => setVideoId(e.target.value)}
           placeholder="Video ID"
           className="w-[70%] text-xl p-[5px] rounded-lg text-black"
         />
+       
         <input
           type="text"
           onChange={(e) => setTitle(e.target.value)}
