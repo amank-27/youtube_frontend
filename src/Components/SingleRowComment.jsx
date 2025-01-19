@@ -65,9 +65,9 @@ export function SingleRowComment({ data }) {
 
   // Display logic for Edit/Delete only if the logged-in user is the one who posted the comment
   return (
-    <div className="relative flex gap-5 border border-black-400 bg-purple-600 justify-start items-center w-[60%] rounded-xl">
-      <div className="w-[80%] flex gap-5 justify-start items-center">
-        <div className="flex gap-2 border border-black-600 w-fit p-[5px] rounded-xl bg-red-600">
+    <div className="relative flex gap-5 border border-black-400 bg-[#668B8B] justify-start items-center w-[60%] rounded-xl">
+      <div className="w-[80%] flex gap-5 pl-4 justify-start items-center">
+        <div className="flex gap-2  w-fit p-[5px] rounded-xl text-white bg-[#668B8B]">
           <div>{e.userName}</div>
         </div>
         {!isEditing && <div className="text-black">{e.commentData}</div>}
@@ -82,7 +82,7 @@ export function SingleRowComment({ data }) {
       </div>
 
       {/* Only show the time if the email is not the same */}
-      {userEmail !== e.userEmail && <div className="right-5 text-gray-800">a while ago</div>}
+      {userEmail !== e.userEmail && <div className="right-5 text-gray-800">Recently</div>}
 
       {/* Show Edit/Delete buttons only if the logged-in user is the author of the comment */}
       {userEmail === e.userEmail && (

@@ -147,11 +147,13 @@ export function ChannelPage({sideNavbar}) {
   }
 
   return (
-    <div className="pt-14">
+    <div className="pt-14 bg-black">
+      
       <Sidebar sideNavbar={sideNavbar} />
-      <div className="m-10">
-        <div className="flex m-10 ml-[10%]">
-          <div className="rounded-[500px] overflow-hidden w-[100px] h-[100px]">
+      <div className="m-10  ">
+        <div className="flex m-10 ml-[10%] bg-cover bg-no-repeat bg-center rounded-md bg-[url(https://wallpapers.com/images/hd/youtube-banner-background-scsczbniw9zz3vk9.jpg)]">
+          
+          <div className="rounded-[500px] mt-2 ml-4 overflow-hidden w-[100px] h-[100px]">
             <img
               src="https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png"
               alt=""
@@ -159,21 +161,21 @@ export function ChannelPage({sideNavbar}) {
             />
           </div>
           <div className="flex flex-col justify-center items-start">
-            <div className="text-3xl font-semibold ml-[20px]">{channelName}</div>
+            <div className="text-3xl text-red-600 font-semibold ml-[20px]">{channelName}</div>
             <div className="font-bold text-gray-400 ml-[20px]">0 Subs</div>
             <div className="flex flex-col md:flex-row md:gap-5">
-              <div className="text-center border p-2 rounded-r-[50px] rounded-l-[50px] text-purple-800 bg-red-600 font-bold text-l cursor-pointer m-2">
+              <div className="text-center border p-2 rounded-r-[50px] rounded-l-[50px] text-purple-800 bg-[#C4C4C4] font-bold text-l cursor-pointer m-2">
                 Subscribe
               </div>
               <div
                 onClick={() => navigate("/addvideo")}
-                className="text-center border p-2 rounded-r-[50px] rounded-l-[50px] text-purple-800 bg-red-600 font-bold text-l cursor-pointer m-2 w-[100px]"
+                className="text-center border p-2 rounded-r-[50px] rounded-l-[50px] text-purple-800 bg-[#C4C4C4] font-bold text-l cursor-pointer m-2 w-[100px]"
               >
                 Add Video
               </div>
               <div
                 onClick={handleDelete}
-                className="text-center border p-2 rounded-r-[50px] rounded-l-[50px] text-purple-800 bg-red-600 font-bold text-l cursor-pointer m-2"
+                className="text-center border p-2 rounded-r-[50px] rounded-l-[50px] text-purple-800 bg-[#C4C4C4] font-bold text-l cursor-pointer m-2"
               >
                 Delete Channel
               </div>
@@ -183,10 +185,10 @@ export function ChannelPage({sideNavbar}) {
         <div className="border"></div>
 
         <div>
-          <div className="m-10 text-2xl text-purple-800">Uploads:</div>
-          <div className="video-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pl-4">
+          <div className="m-10 text-2xl  text-purple-800">Uploads:</div>
+          <div className="video-list  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pl-4">
             {userVideos.length === 0 ? (
-              <div className="text-white text-center">No videos uploaded yet.</div>
+              <div className="text-white text-center bg-black">No videos uploaded yet.</div>
             ) : (
               userVideos.map((video) => (
                 <div

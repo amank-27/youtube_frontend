@@ -6,7 +6,12 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+
 }
+ body{
+   background-color: black;
+ }
+
 
  .homepage_options::-webkit-scrollbar {
     width: 25px;

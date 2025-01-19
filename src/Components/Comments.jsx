@@ -49,12 +49,12 @@ export function Comments(props) {
                     <textarea 
                         value={comment} 
                         onChange={(e) => { setComment(e.target.value); }} 
-                        className="w-[300px] rounded-xl p-[10px] text-black" 
+                        className="w-[50vw] rounded-xl p-[10px] text-black" 
                         placeholder="add your comment"
                     />
                     <button 
                         onClick={handleSubmitComment} 
-                        className="border border-red-600 bg-red-600 rounded-lg font-extrabold text-xl p-[5px] w-[250px]"
+                        className="border border-red-600 bg-red-600 rounded-lg font-extrabold text-xl p-[5px] w-[20vw]"
                     >
                         Add Comment
                     </button>

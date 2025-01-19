@@ -69,7 +69,7 @@ function VideoPage({ sideNavbar }) {
     <div className="bg-black text-white flex flex-row pt-14 gap-6">
       <Sidebar sideNavbar={sideNavbar} />
       {/* Left Video Player (Fixed) */}
-      <div className="flex-3 sticky top-20 w-full lg:w-[65vw] h-full lg:h-auto">
+      <div className="flex-3 sticky top-20 rounded-2xl ml-6 mr-6 w-full lg:w-[65vw] h-full lg:h-auto ">
         <iframe
           width="100%"
           height="500px"
@@ -95,8 +95,9 @@ function VideoPage({ sideNavbar }) {
               />
             </span>
           </div>
-          <div className="subscribe-section mt-4">
-            <button className="bg-red-600 text-white py-2 px-4 rounded">
+          <div className="subscribe-section mt-4 w-[150px]">
+          <h1 className="text-red-600 text-xl font-bold">{video.owner || "Amank"}</h1>
+            <button className="bg-red-600 text-white  rounded">
               Subscribe
             </button>
           </div>

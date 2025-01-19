@@ -48,21 +48,9 @@ export function Register({sideNavbar}) {
             const data = await response.json();
             console.log("Server Response:", data);
 
-            if (data.User) {
-                localStorage.setItem('userName', data.User.username);
-                localStorage.setItem('email', data.User.email); // Save email
-                localStorage.setItem('token', data.token);
-                alert(data.message);
-                if(data.message=="User registered successfully")
-                    {
-                        setTimeout(()=>{
-                        navigate("/login");
-                    },1000);
-                }
-                
-            } else {
-                alert(data.message);
-            }
+           if(data.message=="User registered successfully"){
+              navigate("/login")
+           }
         } catch (error) {
             console.error("Error during registration:", error);
             alert("There was an issue registering. Please try again.");
