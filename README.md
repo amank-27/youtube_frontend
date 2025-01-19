@@ -4,10 +4,19 @@ This repository contains the source code for a fully functional YouTube clone, d
 Key Features:
 - User Authentication:Secure login and registration using JSON Web Tokens (JWT).
 - Responsive UI: An adaptable user interface styled with Tailwind CSS, ensuring a smooth experience across all devices.
+
+- AddVideos functionalty also added for easier access and checking of working-
+ 
+  a video url- https://www.youtube.com/embed/IcAV5qiko8M 
+  you can use anyone from the youtube just copy embedded code in iframe take out the video link from src or provide any video link from the web
+  a video thumbnail image - https://i.ytimg.com/vi/IcAV5qiko8M/hqdefault.jpg 
+  you can take anyone from the web
+  this links are just given for easier accesibilty to addvideo
+
 - Comment System: Full CRUD functionality to manage comments on videos.
   To add comments you have to login you can only edit and delete your own comments
 - Dynamic Routing: Seamless navigation between pages powered by React Router.
-  Also lazy loading and suspense
+  Also lazy loading and suspense is given
 - Backend Integration: A solid server-side setup built with Node.js and Express.js.
 - Database Integration: Efficient data storage and management with MongoDB.
 
@@ -24,9 +33,10 @@ Development Tools:
 - Vite for fast development and hot module replacement
 
 Helpful Links:
-- GitHub Repository: 
-- Demo Video:
-- Live Demo: 
+- GitHub Repository: https://github.com/amank-27/youtube_frontend added backend inside this for easier accesiblilty if you want to check out backend github repo also- https://github.com/amank-27/youtube_backend
+
+- Demo Video: https://drive.google.com/file/d/1o4CcQqvtYW5_923FaGxycHpYnVUNp4Qk/view
+- Live Demo: https://youtube-frontend-w2bc.vercel.app/ vercel link
 
 HOW TO RUN:
 
