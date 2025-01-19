@@ -22,7 +22,7 @@ function HomePage({ sideNavbar, searchTerm }) {
 
   return (
     <div className={"sideNavbar fullhomepage flex flex-col overflow-x-hidden flex-[1] ml-[0px] min-h-[100vh]"}>
-      <div className="homepage_options flex fixed top-[74px] pl-4 z-[1] w-[100%] box-border gap-5 flex-shrink-0 h-[10vh] justify-center items-center overflow-x-auto bg-black lg:top-[56px] md:top-[70px]  lg:pl-36 md:pl-6">
+       <div className="homepage_options flex fixed top-[74px] pl-[400px] z-[1] w-[100vw] box-border gap-2  h-[10vh] justify-center items-center overflow-x-auto bg-black lg:top-[56px] md:top-[76px]  lg:pl-30 md:pl-12">
         {options.map((item, index) => (
           <div
             key={index}
