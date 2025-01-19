@@ -24,9 +24,9 @@ Development Tools:
 - Vite for fast development and hot module replacement
 
 Helpful Links:
-- GitHub Repository: [https://github.com/Vikaas29/YoutubeClone](https://github.com/Vikaas29/YoutubeClone)
-- Demo Video: [Watch on Google Drive](https://drive.google.com/file/d/1b6ZjErSu0op20kc-yiBUP-SHs47rVV7W/view?usp=sharing)
-- Live Demo: [YouTube Clone Live](https://youtube-clone-ruddy-pi.vercel.app/)
+- GitHub Repository: 
+- Demo Video:
+- Live Demo: 
 
 HOW TO RUN:
 
