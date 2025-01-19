@@ -42,7 +42,7 @@ function VideoPage({ sideNavbar }) {
         setLikes(likes + 1);  // Increase likes 
       }
     }
-    setThumbUpClicked(!thumbUpClicked);  e
+    setThumbUpClicked(!thumbUpClicked);  
   };
 
   const handleThumbDownClick = () => {
