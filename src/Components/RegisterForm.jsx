@@ -71,7 +71,7 @@ export function Register({sideNavbar}) {
      className="border border-red-600 bg-red-600 font-bold w-[70%] text-xl p-[5px] rounded-lg" >
             Register
         </button>
-            <div>
+            <div className='text-red-600'>
           Already have an account?{' '}
         <span className="text-red-600 font-bold cursor-pointer" onClick={() => navigate('/login')} >
              Login here
