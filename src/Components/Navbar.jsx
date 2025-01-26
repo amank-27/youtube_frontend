@@ -42,12 +42,12 @@ function Navbar({ setSideNavbarfunc, sideNavbar, searchTerm, setSearchTerm, user
     return (
         <div className="navbar h-[10vh] box-border pt-[5px] pb-[8px] flex items-center w-[100%] space justify-between top-0 fixed bg-black z-10">
             <div className="navbar-left gap-3 flex justify-center items-center w-fit">
-                <div className="menuicon w-10 h-10 pt-1 pl-1 flex justify-center items-center cursor-pointer  md:hidden lg:block" onClick={setSideNavbarfunc}>
+                <div className="menuicon w-10 h-10 pt-1 pl-1 z-50 flex justify-center items-center cursor-pointer  " onClick={setSideNavbarfunc}>
                     <MenuIcon  sx={{ color: "white"  }} />
                 </div>
                 <div className="youtubeicon flex justify-center items-center cursor-pointer text-white" onClick={handleLogoClick}>
                     <YouTubeIcon sx={{ fontSize: "34px" }} className="text-red-600" />
-                    <div className="youtubetitle hidden md:block">YouTube</div>
+                    <div className="youtubetitle hidden md:block z-50">YouTube</div>
                 </div>
             </div>
             <div className="navbar-middle flex gap-3 w-[50%]">

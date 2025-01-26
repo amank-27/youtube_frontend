@@ -24,7 +24,7 @@ function HomePage({ sideNavbar, searchTerm }) {
   return (
     <div className={"sideNavbar fullhomepage flex flex-col overflow-x-hidden flex-[1] ml-[0px] min-h-[100vh]"}>
     
- <div className="homepage_options flex fixed top-[74px] pl-[400px] z-[1] w-[100vw] box-border gap-2  h-[10vh] justify-center items-center overflow-x-auto bg-black lg:top-[56px] md:top-[76px]  lg:pl-30 md:pl-12">
+ <div className="homepage_options flex fixed top-[74px] pl-[400px] z-[1] w-[100vw] box-border gap-2  h-[10vh] justify-center items-center overflow-x-auto bg-black lg:top-[8vh] md:top-[76px]  lg:pl-30 md:pl-12">
         {options.map((item, index) => (
           <div
             key={index}
@@ -34,8 +34,9 @@ function HomePage({ sideNavbar, searchTerm }) {
           </div>
         ))}
       </div>
-
+         
       {/* Video List */}
+      <div className="pt-[4vh]">
       <div className="video-list  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 pt-20 pr-4 pl-4 md:pr-20 md:pl-20 ">
         {filteredVideos.map((video) => {
           const videoOwner = video.owner || "Amank";  
@@ -58,6 +59,7 @@ function HomePage({ sideNavbar, searchTerm }) {
           );
         })}
       </div>
+    </div>
     </div>
   );
 }

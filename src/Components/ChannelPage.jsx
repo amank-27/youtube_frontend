@@ -147,7 +147,7 @@ export function ChannelPage({sideNavbar}) {
   }
 
   return (
-    <div className="pt-14 bg-black">
+    <div className="pt-10 bg-black">
       
       <Sidebar sideNavbar={sideNavbar} />
       <div className="m-10  ">

@@ -64,9 +64,10 @@ function VideoPage({ sideNavbar }) {
   if (error || allVideosError) return <div className="text-white">Error loading video data</div>;
 
   return (
-    <div className="bg-black text-white flex flex-row pt-14 gap-6">
+    <div className="pt-[4vh]">
       <Sidebar sideNavbar={sideNavbar} />
       {/* Left Video Player (Fixed) */}
+      <div className='bg-black text-white flex flex-row pt-[6vh] gap-6'>
       <div className="flex-3 sticky top-20 rounded-2xl ml-6 mr-6 w-full lg:w-[65vw] h-full lg:h-auto ">
         <iframe
           width="100%"
@@ -122,6 +123,7 @@ function VideoPage({ sideNavbar }) {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }

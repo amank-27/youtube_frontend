@@ -23,8 +23,8 @@ function Sidebar({sideNavbar}){
         navigate('/')
     }
     return(
-        <>
-        <div className={sideNavbar ? "home-sidebar flex flex-col flex-grow-[0.16] z-40 flex-shrink box-border h-[95vh] overflow-y-auto fixed t-[55px] left-0 w-[40vw] p-[14px] pt-5 sm:w-[18vw]  md:pt-[50px] lg:pt-2 md:hidden lg:block bg-black text-white":"home-sidebarhide hidden "}>
+        <div className="pt-[3.5vh]">
+        <div className={sideNavbar ? "home-sidebar flex flex-col flex-grow-[0.16] z-40 flex-shrink box-border h-[95vh] overflow-y-auto fixed t-[55px] left-0 w-[40vw] p-[14px] pt-5 sm:w-[18vw]  md:pt-[50px] lg:pt-[0vh] md:hidden lg:block bg-black text-white":"home-sidebarhide hidden "}>
             <div className="sidebartop flex flex-col border-b border-solid  pb-2 ">
                 <div className={`sidebartop-option flex gap-5 items-center pt-[9px] pb-[10px] rounded-2xl cursor-pointer hover:bg-[rgb(35,35,35)]`} onClick={handleNavigate}>
                 <HomeIcon />
@@ -93,7 +93,7 @@ function Sidebar({sideNavbar}){
                  </div>
             </div>
         </div>
-        </>
+        </div>
     )
 }
 

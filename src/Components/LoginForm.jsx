@@ -63,8 +63,9 @@ export function Login({ setUserPic, handleLoginSuccess ,sideNavbar}) {
   return (
     <>
       
-    <div className="w-[100%] h-[100vh] flex justify-center items-center pt-14 bg-black">
+    <div className='pt-[4vh]' >
       <Sidebar sideNavbar={sideNavbar} />
+      <div className="w-[100%] h-[100vh] flex justify-center items-center bg-black">
       
     <form className="border border-white rounded-lg w-[50%] p-[5%] flex flex-col gap-10 justify-center items-center"
       onSubmit={login} >
@@ -78,6 +79,7 @@ export function Login({ setUserPic, handleLoginSuccess ,sideNavbar}) {
           Submit
         </button>
       </form>
+      </div>
     </div>
     </>
   );

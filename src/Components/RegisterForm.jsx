@@ -55,8 +55,9 @@ export function Register({sideNavbar}) {
     }
 
     return (
-        <div className="w-[100%] h-[100vh] flex justify-center items-center pt-14 bg-black">
+        <div className='pt-[4vh]' >
              <Sidebar sideNavbar={sideNavbar} />
+             <div className="w-[100%] h-[100vh] flex justify-center items-center bg-black">
      <form className="border border-white rounded-lg w-[50%] p-[5%] flex flex-col gap-5 justify-center items-center"
      onSubmit={handleRegister}  >
          <h1 className='text-2xl font-bold text-purple-800'>Register</h1>
@@ -77,6 +78,7 @@ export function Register({sideNavbar}) {
                     </span>
                 </div>
             </form>
+        </div>
         </div>
     );
 }
