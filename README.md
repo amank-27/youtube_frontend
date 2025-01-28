@@ -13,6 +13,8 @@ Key Features:
 - User Authentication:Secure login and registration using JSON Web Tokens (JWT).
 - Responsive UI: An adaptable user interface styled with Tailwind CSS, ensuring a smooth experience across all devices.
 
+- videoplayerpage-video to be played with likes and dislikes added functionality for comments only logged in can add comments
+
 - AddVideos functionalty also added for easier access and checking of working-
  
   a video url- https://www.youtube.com/embed/IcAV5qiko8M 
