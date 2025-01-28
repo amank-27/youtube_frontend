@@ -1,6 +1,14 @@
 YouTube Clone Project
 This repository contains the source code for a fully functional YouTube clone, developed using modern web technologies. It provides key features such as video streaming, user authentication, and a commenting system.
 
+
+Helpful Links:
+- GitHub Repository: https://github.com/amank-27/youtube_frontend added backend inside this for easier accesiblilty if you want to check out backend github repo also- https://github.com/amank-27/youtube_backend
+
+- Demo Video: https://drive.google.com/file/d/1o4CcQqvtYW5_923FaGxycHpYnVUNp4Qk/view
+- Live Demo: https://youtube-frontend-w2bc.vercel.app/ vercel link
+
+
 Key Features:
 - User Authentication:Secure login and registration using JSON Web Tokens (JWT).
 - Responsive UI: An adaptable user interface styled with Tailwind CSS, ensuring a smooth experience across all devices.
@@ -31,12 +39,6 @@ Backend:
 - MongoDB
 Development Tools:
 - Vite for fast development and hot module replacement
-
-Helpful Links:
-- GitHub Repository: https://github.com/amank-27/youtube_frontend added backend inside this for easier accesiblilty if you want to check out backend github repo also- https://github.com/amank-27/youtube_backend
-
-- Demo Video: https://drive.google.com/file/d/1o4CcQqvtYW5_923FaGxycHpYnVUNp4Qk/view
-- Live Demo: https://youtube-frontend-w2bc.vercel.app/ vercel link
 
 HOW TO RUN:
 
