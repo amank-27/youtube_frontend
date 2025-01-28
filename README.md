@@ -5,7 +5,8 @@ This repository contains the source code for a fully functional YouTube clone, d
 Helpful Links:
 - GitHub Repository: https://github.com/amank-27/youtube_frontend added backend inside this for easier accesiblilty if you want to check out backend github repo also- https://github.com/amank-27/youtube_backend
 
-- Demo Video: https://drive.google.com/file/d/1o4CcQqvtYW5_923FaGxycHpYnVUNp4Qk/view
+- Demo Video(Walkthrough video): https://drive.google.com/file/d/1o4CcQqvtYW5_923FaGxycHpYnVUNp4Qk/view
+
 - Live Demo: https://youtube-frontend-w2bc.vercel.app/ vercel link
 
 
